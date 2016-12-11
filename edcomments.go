@@ -16,4 +16,3 @@ func main() {
 		log.Println("Finalizó la migración.")
 	}
 }
-
