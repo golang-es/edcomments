@@ -1,6 +1,15 @@
+##
 # Carpetas
+#
 .idea
 
+##
 # Ejecutables
+#
 edcomments
 edcomments.exe
+
+##
+# Archivo de configuración
+#
+config.json
