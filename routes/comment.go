@@ -1,11 +1,12 @@
 package routes
 
 import (
+	"github.com/golang-es/edcomments/controllers"
 	"github.com/gorilla/mux"
 	"github.com/urfave/negroni"
-	"github.com/golang-es/edcomments/controllers"
 )
 
+// SetCommentRouter contiene las rutas para la creación y consulta de comentarios
 func SetCommentRouter(router *mux.Router) {
 	prefix := "/api/comments"
 	subRouter := mux.NewRouter().PathPrefix(prefix).Subrouter().StrictSlash(true)
