@@ -2,9 +2,11 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"log"
 	"net/http"
 
+	"github.com/golang-es/edcomments/commons"
 	"github.com/golang-es/edcomments/migration"
 	"github.com/golang-es/edcomments/routes"
 	"github.com/urfave/negroni"
@@ -13,6 +15,7 @@ import (
 func main() {
 	var migrate string
 	flag.StringVar(&migrate, "migrate", "no", "Genera la migración a la BD")
+	flag.IntVar(&commons.Port, "port", 8080, "Puerto para el servidor web")
 	flag.Parse()
 	if migrate == "yes" {
 		log.Println("Comenzó la migración...")
@@ -29,11 +32,11 @@ func main() {
 
 	// Inicia el servidor
 	server := &http.Server{
-		Addr:    ":8080",
+		Addr:    fmt.Sprintf(":%d", commons.Port),
 		Handler: n,
 	}
 
-	log.Println("Iniciado el servidor en http://localhost:8080")
+	log.Printf("Iniciado en http://localhost:%d", commons.Port)
 	log.Println(server.ListenAndServe())
 	log.Println("Finalizó la ejecución programa")
 }
