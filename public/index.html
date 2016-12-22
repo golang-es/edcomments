@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Realtime</title>
+</head>
+<body>
+    <h1>Realtime</h1>
+    <div class="container-data" id="containerData"></div>
+
+    <script type="text/javascript">
+        var url = "ws://" + window.location.host + "/ws";
+        var ws = new WebSocket(url);
+        var containerData = document.getElementById("containerData");
+
+        ws.onmessage = function (msg) {
+            containerData.innerHTML += "<pre>" + msg.data + "</pre>\n"
+        }
+    </script>
+</body>
+</html>
