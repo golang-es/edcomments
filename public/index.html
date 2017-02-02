@@ -2,20 +2,26 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Realtime</title>
+    <title>EDComments</title>
 </head>
 <body>
-    <h1>Realtime</h1>
-    <div class="container-data" id="containerData"></div>
 
-    <script type="text/javascript">
-        var url = "ws://" + window.location.host + "/ws";
-        var ws = new WebSocket(url);
-        var containerData = document.getElementById("containerData");
+    <form action="/api/login" method="post" id="form-login">
+        <input type="email" id="email" name="email" placeholder="Email">
+        <input type="password" id="password" name="password" placeholder="Password">
+        <button id="btnLogin">Login</button>
+    </form>
+    <div id="mensaje-login"></div>
 
-        ws.onmessage = function (msg) {
-            containerData.innerHTML += "<pre>" + msg.data + "</pre>\n"
-        }
-    </script>
+    <form action="/api/comments/" method="post" id="form-comment-add">
+        <textarea id="comment-content" name="comment-content"></textarea>
+        <button id="btnCommentAdd">Comentar</button>
+    </form>
+    <div id="mensaje-comentario"></div>
+
+
+    <script src="js/libreria.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/comments.js"></script>
 </body>
 </html>
